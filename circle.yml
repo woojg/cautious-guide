@@ -10,6 +10,35 @@ machine:
     # please specify your code signing identity name here
     GYM_CODE_SIGNING_IDENTITY: "iPhone Developer: jeonggeun woo (P647ZF73GM)"
 
+
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init --recursive
+
+dependencies:
+  override:
+    - pod install:
+        timeout: 1800
+  cache_directories:
+    - "~/.cocoapods"
+    
+test:
+  override:
+    - ./scripts/CircleCI/analyze.sh
+    - set -o pipefail &&
+      xcodebuild
+        CODE_SIGNING_REQUIRED=NO
+        CODE_SIGN_IDENTITY=
+        PROVISIONING_PROFILE=
+        -sdk iphonesimulator
+        -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
+        -workspace cautious/cautious.xcworkspace
+        -scheme "cautious"
+        test |
+      tee $CIRCLE_ARTIFACTS/xcode_raw.log |
+      xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml
+      
 #test:
 #  override:
 #    - ./bin/tests
