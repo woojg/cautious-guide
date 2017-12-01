@@ -1,0 +1,15 @@
+PODS:
+  - Alamofire (4.5.1)
+  - Toaster (2.1.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - Toaster
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
+
+PODFILE CHECKSUM: aa3e30677ae4520e7c6c3226cc109417bad6991e
+
+COCOAPODS: 1.3.1
