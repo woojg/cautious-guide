@@ -19,7 +19,7 @@ test:
         PROVISIONING_PROFILE=
         -sdk iphonesimulator
         -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
-        -workspace cautious.xcworkspace
+        -workspace cautious/cautious.xcworkspace
         -scheme "com.woojg.cautious"
         clean build test |
       tee $CIRCLE_ARTIFACTS/xcode_raw.log |
