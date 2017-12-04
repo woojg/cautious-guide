@@ -11,15 +11,16 @@ machine:
     GYM_CODE_SIGNING_IDENTITY: "iPhone Developer: jeonggeun woo (P647ZF73GM)"
 
 dependencies:
-  pre:
-    - brew update || brew update
-    - brew outdated xctool || brew upgrade xctool
-
-test:
+  cache_directories:
+    # Cache the CocoaPods repos to improve build times.
+    - ~/.cocoapods
   override:
-    - rake test:ios
-    - rake test:osx
-    - rake test:xctool_ios
+    # Install gem dependencies.
+    - bundle install
+    # Update the cached CocoaPods master repo.
+    - bundle exec pod repo update
+    # Install iOS library dependencies.
+    - bundle exec pod install
     
 
       
