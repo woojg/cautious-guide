@@ -11,16 +11,10 @@ machine:
     GYM_CODE_SIGNING_IDENTITY: "iPhone Developer: jeonggeun woo (P647ZF73GM)"
 
 dependencies:
-  cache_directories:
-    # Cache the CocoaPods repos to improve build times.
-    - ~/.cocoapods
   override:
-    # Install gem dependencies.
-    - bundle install
-    # Update the cached CocoaPods master repo.
-    - bundle exec pod repo update
-    # Install iOS library dependencies.
-    - bundle exec pod install
+    - bin/bootstrap-if-needed
+  cache_directories:
+    - "Carthage"
     
 
       
