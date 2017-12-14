@@ -16,7 +16,7 @@ test:
     - set -o pipefail &&
       xcodebuild
         -sdk iphonesimulator
-        -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
+        -destination 'platform=iOS Simulator,OS=11.1,name=iPhone 7'
         -workspace cautious/cautious.xcworkspace
         -scheme "cautiousTests"
         clean build test |
