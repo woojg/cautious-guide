@@ -10,15 +10,6 @@ machine:
     # please specify your code signing identity name here
     GYM_CODE_SIGNING_IDENTITY: "iPhone Developer: jeonggeun woo (P647ZF73GM)"
 
-dependencies:
-  cache_directories:
-    - 'vendor/bundle'
-    - 'Pods'
-    - '~/.cocoapods'
-  override:
-    - bundle install -j4 --path=vendor/bundle
-    - pod install:
-        timeout: 300
         
 test:
   override:
